@@ -1,61 +1,38 @@
-import React, { FC, ChangeEvent, useState } from 'react';
+import { useState, FC } from 'react';
+import List from './components/List';
+import AddToList from './components/AddToList';
 import './App.css';
-import { ITask } from './Interfaces';
-import TodoTask from './components/TodoTask';
+
+export interface IState {
+  poeple: {
+    name: string;
+    age: number;
+    url: string;
+    note?: string;
+  }[];
+}
 
 const App: FC = () => {
-  const [task, setTask] = useState<string>('');
-  const [deadline, setDeadline] = useState<number>(0);
-  const [todoList, setTodoList] = useState<ITask[]>([]);
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.name === 'task') {
-      setTask(event.target.value);
-    } else {
-      setDeadline(Number(event.target.value));
-    }
-  };
-
-  const handleClick = (): void => {
-    const newTask = { taskName: task, deadline: deadline };
-    setTodoList([...todoList, newTask]);
-    setTask('');
-    setDeadline(0);
-  };
-
-  const completeTask = (taskNameToDelete: string): void => {
-    setTodoList(todoList.filter((task) => task.taskName !== taskNameToDelete));
-  };
-
+  const [people, setPeople] = useState<IState['poeple']>([
+    {
+      name: 'Zain Sadaqat',
+      url: 'https://images.unsplash.com/photo-1639502496516-95531e23e304?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60',
+      age: 23,
+      note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, veritatis',
+    },
+    {
+      name: 'Zain Sadaqat 2',
+      url: 'https://images.unsplash.com/photo-1593642633279-1796119d5482?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60',
+      age: 20,
+      note: 'Lorem ipsum 2 dolor sit amet consectetur adipisicing elit. Ducimus, veritatis',
+    },
+  ]);
   return (
-    <div className="App">
-      <div className="header">
-        <div className="inputContainer">
-          <input
-            type="text"
-            placeholder="Task..."
-            name="task"
-            value={task}
-            onChange={handleChange}
-          />
-          <input
-            type="number"
-            placeholder="Deadline (in Days)..."
-            name="deadline"
-            value={deadline}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="button" onClick={handleClick}>
-          Add Task
-        </button>
-      </div>
-      <div className="todoList">
-        {todoList.map((todo: ITask, key: number) => (
-          <TodoTask key={key} todo={todo} completeTask={completeTask} />
-        ))}
-      </div>
-    </div>
+    <section className="App">
+      <h2>People Invited to the Party!</h2>
+      <List people={people} />
+      <AddToList people={people} setPeople={setPeople} />
+    </section>
   );
 };
 
