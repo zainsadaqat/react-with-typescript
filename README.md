@@ -128,3 +128,14 @@ const Button = (props: ButtonProps) => {
   return <button onClick={props.handleClick}>Click me!</button>;
 };
 ```
+
+### Passing Click Event as Props with parameters in React with TypeScript
+```typescript
+type ButtonProps = {
+  handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+const Button = (props: ButtonProps) => {
+  return <button onClick={props.handleClick}>Button</button>;
+};
+```

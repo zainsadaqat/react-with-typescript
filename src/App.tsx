@@ -36,7 +36,9 @@ function App() {
       <Oscar>
         <Heading>Here's the heading</Heading>
       </Oscar>
-      <Button handleClick={() => console.log('Handle Click Event')} />
+      <Button
+        handleClick={(event) => console.log('Handle Click Event', event)}
+      />
     </div>
   );
 }
