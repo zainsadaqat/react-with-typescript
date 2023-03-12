@@ -151,7 +151,53 @@ type InputProps = {
 
 const Input = (props: InputProps) => {
   return (
-    <input type="text" value={props.value} onChange={props.handleChange}/>
-  )
+    <input type="text" value={props.value} onChange={props.handleChange} />
+  );
 };
+```
+
+### Passing styles as props in React with TypeScript
+
+```typescript
+type ContainerProps = {
+  styles: React.CSSProperties;
+};
+
+const Container = (props: ContainerProps) => {
+  return <div style={props.styles}>Here's the style</div>;
+};
+
+const App = () => {
+  return <Container styles={{ border: '1px solid red' }} />;
+};
+```
+
+### Destructuring Props
+```typescript 
+const Input = ({value, handleChange}: InputProps) => {}
+```
+
+### Export type
+```typescript
+export type PersonProps = {
+  name: {
+    firstName: string;
+    lastName: string;
+  }
+}
+
+import {PersonProps} from './file-name'
+  }
+```
+
+### Type ReUsability
+```typescript
+export type Name = {
+  firstName: string;
+  lastName: string;
+}
+
+export type NameListProps = {
+  names: Name[];
+}
 ```
