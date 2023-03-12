@@ -130,6 +130,7 @@ const Button = (props: ButtonProps) => {
 ```
 
 ### Passing Click Event as Props with parameters in React with TypeScript
+
 ```typescript
 type ButtonProps = {
   handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -137,5 +138,20 @@ type ButtonProps = {
 
 const Button = (props: ButtonProps) => {
   return <button onClick={props.handleClick}>Button</button>;
+};
+```
+
+### Passing Change Event as Props with parameters in React with TypeScript
+
+```typescript
+type InputProps = {
+  value: string;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+const Input = (props: InputProps) => {
+  return (
+    <input type="text" value={props.value} onChange={props.handleChange}/>
+  )
 };
 ```
