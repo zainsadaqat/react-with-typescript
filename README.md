@@ -173,11 +173,13 @@ const App = () => {
 ```
 
 ### Destructuring Props
-```typescript 
-const Input = ({value, handleChange}: InputProps) => {}
+
+```typescript
+const Input = ({ value, handleChange }: InputProps) => {};
 ```
 
 ### Export type
+
 ```typescript
 export type PersonProps = {
   name: {
@@ -191,13 +193,40 @@ import {PersonProps} from './file-name'
 ```
 
 ### Type ReUsability
+
 ```typescript
 export type Name = {
   firstName: string;
   lastName: string;
-}
+};
 
 export type NameListProps = {
   names: Name[];
-}
+};
+```
+
+### Passing type to React useState hook
+
+```typescript
+type UserType = {
+  name: string;
+  email: string;
+};
+
+const User = () => {
+  const [user, setUser] = React.useState<UserType | null>(null);
+  return (
+    <>
+      <button
+        onClick={() =>
+          setUser({ name: 'zain sadaqat', email: 'zain@gmail.com' })
+        }
+      >
+        Login
+      </button>
+      <button onClick={() => setUser(null)}>Logout</button>
+      {user ? 'Logged In' : 'Logged Out'}
+    </>
+  );
+};
 ```

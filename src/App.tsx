@@ -8,6 +8,7 @@ import Oscar from './components/Oscar';
 import Button from './components/Button';
 import Input from './components/Input';
 import Container from './components/Container';
+import LoggedIn from './components/state/LoggedIn';
 
 function App() {
   const name = {
@@ -31,18 +32,26 @@ function App() {
   ];
   return (
     <div className="App">
-      <Greet name="Zain Sadaqat" messageCount={14} isLoggedIn={true} />
-      <Person name={name} />
-      <PersonsList nameList={nameList} />
-      <Status status="success" />
-      <Oscar>
-        <Heading>Here's the heading</Heading>
-      </Oscar>
-      <Button
-        handleClick={(event) => console.log('Handle Click Event', event)}
-      />
-      <Input value="" handleChange={(event) => event.target.value} />
-      <Container styles={{ border: '1px solid red' }} />
+      {false ? (
+        <div>
+          <Greet name="Zain Sadaqat" messageCount={14} isLoggedIn={true} />
+          <Person name={name} />
+          <PersonsList nameList={nameList} />
+          <Status status="success" />
+          <Oscar>
+            <Heading>Here's the heading</Heading>
+          </Oscar>
+          <Button
+            handleClick={(event) => console.log('Handle Click Event', event)}
+          />
+          <Input value="" handleChange={(event) => event.target.value} />
+          <Container styles={{ border: '1px solid red' }} />
+        </div>
+      ) : (
+        <>
+          <LoggedIn />
+        </>
+      )}
     </div>
   );
 }
