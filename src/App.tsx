@@ -5,6 +5,7 @@ import PersonsList from './components/PersonsList';
 import Status from './components/Status';
 import Heading from './components/Heading';
 import Oscar from './components/Oscar';
+import Button from './components/Button';
 
 function App() {
   const name = {
@@ -35,6 +36,7 @@ function App() {
       <Oscar>
         <Heading>Here's the heading</Heading>
       </Oscar>
+      <Button handleClick={() => console.log('Handle Click Event')} />
     </div>
   );
 }

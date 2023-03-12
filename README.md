@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Getting Started with Create React App with TypeScript
 
 ### Create react app with Typescript
 
@@ -115,4 +115,16 @@ const Oscar = (props: OscarProps) => {
 <Oscar>
   <Heading>Here's the Heading...</Heading>
 </Oscar>;
+```
+
+### Passing Click Event as Props in React with TypeScript
+
+```typescript
+type ButtonProps = {
+  handleClick: () => void;
+};
+
+const Button = (props: ButtonProps) => {
+  return <button onClick={props.handleClick}>Click me!</button>;
+};
 ```
